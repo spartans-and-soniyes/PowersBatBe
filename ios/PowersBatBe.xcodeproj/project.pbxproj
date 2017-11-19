@@ -687,6 +687,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = BTYP3V5K5T;
+						LastSwiftMigration = 0830;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1216,6 +1217,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BTYP3V5K5T;
@@ -1231,6 +1233,9 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = PowersBatBe;
+				SWIFT_OBJC_BRIDGING_HEADER = "PowersBatBe-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1240,6 +1245,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BTYP3V5K5T;
 				HEADER_SEARCH_PATHS = (
@@ -1254,6 +1260,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = PowersBatBe;
+				SWIFT_OBJC_BRIDGING_HEADER = "PowersBatBe-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

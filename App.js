@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Vibration,
 } from 'react-native';
 import Camera from 'react-native-camera';
 
@@ -87,16 +88,30 @@ export default class App extends React.Component {
       this.state.intervalPics = setInterval(function(){
         that.camera.capture({
           mode: Camera.constants.CaptureMode.still,
-          target: Camera.constants.CaptureTarget.cameraRoll
+          target: Camera.constants.CaptureTarget.disk
         })
-          .then((data) => {
-            console.log(data);
-            /*var xhr = new XMLHttpRequest();
-            xhr.open('POST', serverURL);*/
-            //xhr.send(data);
-          })
-          .catch(err => console.error(err));
-      }, 500);
+        .then((camData) => {
+            var PicturePath = camData.path;
+            console.log(camData);
+            const data = new FormData();
+            data.append('name', 'testName'); // you can append anyone.
+            data.append('photo', {
+              uri: PicturePath,
+              type: 'image/jpeg', // or photo.type
+              name: 'testPhotoName'
+            });
+            fetch(url, {
+              method: 'post',
+              body: data
+        }).then(res => {
+            if(res.ServerResponseValue){
+              Vibration.vibrate();
+            }
+        })
+        .catch(err => console.error(err));
+
+      }, 1000);
+
       this.setState({
         isRecording: true
       });
@@ -200,14 +215,6 @@ export default class App extends React.Component {
           mirrorImage={false}
         />
         <View style={[styles.overlay, styles.topOverlay]}>
-          <TouchableOpacity
-            style={styles.typeButton}
-            onPress={this.switchType}
-          >
-            <Image
-              source={this.typeIcon}
-            />
-          </TouchableOpacity>
           <TouchableOpacity
             style={styles.flashButton}
             onPress={this.switchFlash}
