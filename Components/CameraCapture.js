@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 import Camera from "react-native-camera";
-import BoxyBoi from './BoxyBoi.'
+import BoxyBoi from './BoxyBoi.js'
 
 export default class CameraCapture extends Component{
     constructor(){
