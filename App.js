@@ -87,7 +87,7 @@ export default class App extends React.Component {
       this.state.intervalPics = setInterval(function(){
         that.camera.capture({
           mode: Camera.constants.CaptureMode.still,
-          target: Camera.constants.CaptureTarget.temp
+          target: Camera.constants.CaptureTarget.cameraRoll
         })
           .then((data) => {
             console.log(data);
@@ -96,7 +96,7 @@ export default class App extends React.Component {
             //xhr.send(data);
           })
           .catch(err => console.error(err));
-      }, 2000);
+      }, 500);
       this.setState({
         isRecording: true
       });
@@ -218,20 +218,6 @@ export default class App extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={[styles.overlay, styles.bottomOverlay]}>
-          {
-            !this.state.isRecording
-            &&
-            <TouchableOpacity
-                style={styles.captureButton}
-                onPress={this.takePicture}
-            >
-              <Image
-                  source={require('./assets/ic_photo_camera_36pt.png')}
-              />
-            </TouchableOpacity>
-            ||
-            null
-          }
           <View style={styles.buttonsSpace} />
           {
               !this.state.isRecording
